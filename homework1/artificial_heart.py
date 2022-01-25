@@ -34,7 +34,7 @@ class ArtificialHeart:
 
     def lv_fill_base_eq(self, y_p, y_0, t_0, t):
         if t < t_0:
-            return y_0
+            return y_p
         else:
             return y_p + (y_0 - y_p)*(1 - exp(-self.k_diastole*(t - t_0)))
         
