@@ -33,18 +33,48 @@ class ArtificialHeart:
         self.sin_freq = 1/sin_period  # sec^-1
 
     def lv_fill_base_eq(self, y_p, y_0, t_0, t):
+        """Volumetric base equation for left ventricular filling
+
+        Args:
+            y_p (float): y plateau
+            y_0 (float): y initial
+            t_0 (float): time
+            t (float): current time
+
+        Returns:
+            float: lv volume output
+        """
         if t < t_0:
             return y_p
         else:
             return y_p + (y_0 - y_p)*(1 - exp(-self.k_diastole*(t - t_0)))
         
     def lv_eject_base_eq(self, y_p, y_0, t_0, t):
+        """Volumetric base equation for left ventricular ejection
+
+        Args:
+            y_p (float): y plateau
+            y_0 (float): y initial
+            t_0 (float): time
+            t (float): current time
+
+        Returns:
+            float: lv volume output
+        """
         if t < t_0:
             return y_0
         else:
             return y_p + (y_0 - y_p)*exp(-self.k_systole*(t - t_0))
         
     def lv_pressure(self, t):
+        """Pressure equation for left ventricle
+
+        Args:
+            t (float): current time
+
+        Returns:
+            float: lv pressure
+        """
         if t < self.iso_fill_end:
             return (self.sp - self.min_lv_pressure)*sin(2*pi*self.sin_freq*t) + self.min_lv_pressure
         else:
