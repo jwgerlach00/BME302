@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def moving_average(a, window):
+def moving_average(arr, window):
     """Smooths out each column of an array using a moving average
 
     Args:
@@ -13,12 +13,12 @@ def moving_average(a, window):
     Returns:
         np.Array: Smoothed array
     """
-    length = round(len(a)/window)
+    length = round(len(arr)/window)
     out = []
     for i in range(length):
-        b = a[window*i:window*(i + 1)]
-        b = b.mean(axis=0)
-        out.append(b)
+        arr_i = arr[window*i:window*(i + 1)]
+        arr_i = arr_i.mean(axis=0)
+        out.append(arr_i)
     return np.array(out)
 
 
@@ -32,20 +32,25 @@ if __name__ == '__main__':
     two_element_df = two_element_df.iloc[round(0.05*len(two_element_df)):round(0.9*len(two_element_df))]
 
     # Take a moving average of the data
-    two_element_avg = moving_average(two_element_df.to_numpy(), 100)
     one_element_avg = moving_average(one_element_df.to_numpy(), 50)
+    two_element_avg = moving_average(two_element_df.to_numpy(), 100)
 
     # Plot Windkessel data
     plt.plot(one_element_avg[:, 0], one_element_avg[:, 1], lw=3, color='b')
-    plt.title('One-Element Windkessel')
-    plt.xlabel('Time (s)')
-    plt.ylabel('Voltage (mV)')
+    plt.title('One-Element Windkessel', fontsize=24)
+    plt.xlabel('Time (s)', fontsize=16)
+    plt.ylabel('Voltage (mV)', fontsize=16)
+    plt.xticks(fontsize=12)
+    plt.yticks(fontsize=12)
     plt.grid(True)
+    plt.savefig('1_element_plot.png')
     
     plt.figure()
     plt.plot(two_element_avg[:, 0], two_element_avg[:, 1], lw=3, color='r')
-    plt.title('Two-Element Windkessel')
-    plt.xlabel('Time (s)')
-    plt.ylabel('Voltage (mV)')
+    plt.title('Two-Element Windkessel', fontsize=24)
+    plt.xlabel('Time (s)', fontsize=16)
+    plt.ylabel('Voltage (mV)', fontsize=16)
+    plt.xticks(fontsize=12)
+    plt.yticks(fontsize=12)
     plt.grid(True)
-    plt.show()
+    plt.savefig('2_element_plot.png')
