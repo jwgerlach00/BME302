@@ -14,7 +14,7 @@ clear variables;
 clc;
 
 %% Declared variables
-HR=70; % BPM
+HR  70; % BPM
 T = 60/HR; % Duration of Cardiac Cycle in sec
 Ts =(2/5)*T; % Duration of systole in sec
 P0 = 0; % Initial pressure in mmHg

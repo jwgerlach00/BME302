@@ -141,3 +141,7 @@ if __name__ == '__main__':
     plt.grid(True)
     plt.legend(fontsize=12)
     plt.savefig('2_element_sim.png')
+
+    # Print peak differences (y-range)
+    print(max(sim_df.y1), max(sim_df.y2))
+    print(max(one_element_avg[:, 1]) - one_element_avg[0, 1], max(two_element_avg[:, 1]) - two_element_avg[0, 1])
