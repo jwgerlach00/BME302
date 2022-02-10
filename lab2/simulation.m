@@ -68,3 +68,6 @@ xlabel("Time (sec)",'FontSize',20)
 legend('1-Element', '2-Elements', 'FontSize', 16)
 title("1-Element vs. 2-Element Windkessel Simulations",'FontSize',24)
 saveas(fig, 'question3.png')
+
+
+plot([0.001 10000], casson_y*ones(2), casson_x*ones(2))
