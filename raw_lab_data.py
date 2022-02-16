@@ -1,4 +1,3 @@
-import pandas as pd
 import plotly.express as px
 
 
@@ -10,7 +9,6 @@ class VisualizeRaw:
         
     def start_indices(self):
         # Find all indices where time resets to 0s (start of trial)
-        print(self.df.where(self.df[self.time] == 0).dropna().index.tolist())
         return self.df.where(self.df[self.time] == 0).dropna().index.tolist()
     
     def split_trials(self):
