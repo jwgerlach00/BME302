@@ -1,6 +1,7 @@
 import pandas as pd
 from scipy.stats import ttest_rel
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 # Read and clear data
@@ -40,4 +41,9 @@ stats_df = pd.DataFrame({
     'diastolic_mic': [p_val_dia_mic, mean_dia_mic, std_dia_mic],
 })
 
+# Export stats
 stats_df.to_excel('out_data/class_stats.xlsx', index=False)
+means = stats_df.iloc[1, 1:]
+yerr = stats_df.iloc[2, 1:]
+plt.bar(list(range(len(means))), means, yerr=yerr)
+plt.show()
