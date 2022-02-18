@@ -45,5 +45,6 @@ stats_df = pd.DataFrame({
 stats_df.to_excel('out_data/class_stats.xlsx', index=False)
 means = stats_df.iloc[1, 1:]
 yerr = stats_df.iloc[2, 1:]
+
 plt.bar(list(range(len(means))), means, yerr=yerr)
 plt.show()
