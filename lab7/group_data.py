@@ -18,3 +18,6 @@ plt.grid()
 plt.savefig('data/nerve_conduction_velocity.png')
 
 print(df['nerve conduction velocity (m/s)'].std())
+
+# Stats
+df['nerve conduction velocity (m/s)'].describe().to_excel('data/nerve_conduction_velocity_stats.xlsx')
