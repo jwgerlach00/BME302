@@ -1,11 +1,14 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+from stse import stats
 
 
+# Read to dataframe
 df = pd.read_excel('data/group_data.xlsx')
 
 print(df)
 
+# Plot
 fig = plt.figure()
 fig.subplots_adjust(bottom=0.15)
 plt.hist(df['nerve conduction velocity (m/s)'], zorder=2, color='purple')
@@ -21,3 +24,6 @@ print(df['nerve conduction velocity (m/s)'].std())
 
 # Stats
 df['nerve conduction velocity (m/s)'].describe().to_excel('data/nerve_conduction_velocity_stats.xlsx')
+
+# Display z-score
+print(stats.z_norm(df['nerve conduction velocity (m/s)']))
